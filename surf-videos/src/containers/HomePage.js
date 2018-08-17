@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import VideoList from '../components/VideoList';
 
 class HomePage extends Component {
     constructor(props) {
@@ -8,8 +9,10 @@ class HomePage extends Component {
     }
 
     render() {
+      const {searchResults} = this.props;
+      
       return (
-        <span> VideoList </span>
+        <VideoList searchResults={searchResults} />
       );
     }
   }

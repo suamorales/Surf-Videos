@@ -15,7 +15,7 @@ class AppBase extends Component {
     <div>
       <MuiThemeProvider>
         <SearchBar />
-        <HomePage />
+        <HomePage searchResults={searchResults} />
       </MuiThemeProvider>
     </div>);
   }
