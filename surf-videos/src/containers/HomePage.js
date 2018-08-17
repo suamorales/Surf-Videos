@@ -9,10 +9,15 @@ class HomePage extends Component {
     }
 
     render() {
-      const {searchResults} = this.props;
-      
+      const {handleSearchRequest, handleInfiniteLoad, searchResults, isLastPageofData} = this.props;
+
       return (
-        <VideoList searchResults={searchResults} />
+        <VideoList
+          handleSearchRequest={handleSearchRequest}
+          handleInfiniteLoad={handleInfiniteLoad}
+          searchResults={searchResults}
+          isLastPageofData={isLastPageofData}
+        />
       );
     }
   }

@@ -1,27 +1,51 @@
 import React, { Component } from 'react';
-import SearchBar from './SearchBar';
+import './AppBase.css';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import HomePage from '../containers/HomePage';
+import Routes from '../Routes';
+import SearchBar from './SearchBar';
+import Snackbar from 'material-ui/Snackbar';
 
 class AppBase extends Component {
-  constructor(props){
-    super(props);
-    this.state = {};
+    constructor(props){
+      super(props);
+    }
+    render() {
+      const {
+        handleSearchRequest,
+        handleInfiniteLoad,
+        searchResults,
+        isLastPageofData,
+        isLoading,
+        fetchError,
+        showErrorMessage,
+        hideErrorMessage,
+      } = this.props;
+      return (
+        <div style={{height:'100%', width:'100%'}}>
+          <MuiThemeProvider>
+            <div className='row'>
+              <SearchBar
+                handleSearchRequest={handleSearchRequest} 
+                isLoading={isLoading}
+              />
+              <Routes
+                searchResults={searchResults}
+                isLastPageofData={isLastPageofData}
+                handleSearchRequest={handleSearchRequest}
+                handleInfiniteLoad={handleInfiniteLoad}
+                showErrorMessage={showErrorMessage}
+              />
+              <Snackbar
+                open={fetchError}
+                message='Oops! Something went wrong. Please refresh and try again.'
+                autoHideDuration={4000}
+                onRequestClose={hideErrorMessage}
+              />
+            </div>
+          </MuiThemeProvider>        
+        </div>
+      );
+    }
   }
-  render() {
-    const {searchResults} = this.props;
-
-    return(
-    <div>
-      <MuiThemeProvider>
-        <SearchBar
-          handleSearchRequest={handleSearchRequest}
-          isLoading={isLoading}
-        />
-        <HomePage searchResults={searchResults} handle />
-      </MuiThemeProvider>
-    </div>);
-  }
-}
-
-export default AppBase;
+  
+  export default AppBase;
