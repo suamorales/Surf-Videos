@@ -1,25 +1,21 @@
-import React, { Component } from 'react';
-import './AppBase.css';
+import React from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Snackbar from 'material-ui/Snackbar';
 import Routes from '../Routes';
 import SearchBar from './SearchBar';
-import Snackbar from 'material-ui/Snackbar';
 
-class AppBase extends Component {
-    constructor(props){
-      super(props);
-    }
-    render() {
-      const {
-        handleSearchRequest,
-        handleInfiniteLoad,
-        searchResults,
-        isLastPageofData,
-        isLoading,
-        fetchError,
-        showErrorMessage,
-        hideErrorMessage,
-      } = this.props;
+const AppBase = (props) => {
+  const {
+    handleSearchRequest,
+    handleInfiniteLoad,
+    searchResults,
+    isLastPageofData,
+    isLoading,
+    fetchError,
+    showErrorMessage,
+    hideErrorMessage,
+  } = props;
+
       return (
         <div style={{height:'100%', width:'100%'}}>
           <MuiThemeProvider>
@@ -46,6 +42,5 @@ class AppBase extends Component {
         </div>
       );
     }
-  }
-  
+
   export default AppBase;

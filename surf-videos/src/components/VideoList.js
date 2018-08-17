@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
-import { Link } from 'react-router-dom'
-import { Card, CardTitle, CardMedia } from 'material-ui/Card';
+import {Link} from 'react-router-dom'
+import {Card, CardTitle, CardMedia} from 'material-ui/Card';
 
 const VideoList = (props) => {
   const {handleInfiniteLoad, searchResults, isLastPageofData} = props;
@@ -14,14 +14,14 @@ const VideoList = (props) => {
               initialLoad={false}
               loadMore={handleInfiniteLoad}
               hasMore={isLastPageofData}
-              loader={<div className='col-8'> Loading ... </div>}
+              loader={<div className='col-8' key={'VideoList__loading-placeholder'}> Loading ... </div>}
               useWindow={true}
               className='row justify-content-center'>
               {searchResults.map(res =>
               <Card style={{marginTop: 20, height: '50%', width: '80%'}} key={res.id.videoId}>
                 <div className="row">
                   <CardMedia className="col-4" style={{height: '100%'}}>
-                    <img src={res.snippet.thumbnails.medium.url} />
+                    <img src={res.snippet.thumbnails.medium.url} alt='video thumbnail' />
                   </CardMedia>
                   <div className="col-7">
                     <Link to={`/watch/${res.id.videoId}`}>
@@ -30,11 +30,12 @@ const VideoList = (props) => {
                   </div>
                 </div>
               </Card>)}
-            </InfiniteScroll> ||
-            <div className='row justify-content-center' style={{fontSize: 50, marginTop: 50}}> 
+              </InfiniteScroll>) ||
+            (<div
+              className='row justify-content-center'
+              style={{fontSize: 50, marginTop: 50}}> 
               Search for sweet surf videos!
-            </div>
-          )
+            </div>)
         }
       </div>
     )

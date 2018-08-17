@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
+import {BrowserRouter} from 'react-router-dom';
 import AppBase from '../components/AppBase';
-import { BrowserRouter } from 'react-router-dom';
-import { videoSearchEndpoint }  from '../apiEndpoints';
+import {videoSearchEndpoint}  from '../apiEndpoints';
 
 class App extends Component {
   constructor(props){

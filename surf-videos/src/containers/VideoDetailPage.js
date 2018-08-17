@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import axios from 'axios';
+import {withRouter} from 'react-router';
+import {Card,CardTitle, CardText} from 'material-ui/Card';
 import Paper from 'material-ui/Paper';
-import { withRouter } from 'react-router';
-import { videoDetailEndpoint } from '../apiEndpoints';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+import {videoDetailEndpoint} from '../apiEndpoints';
 
 class VideDetailPage extends Component {
     constructor(props) {

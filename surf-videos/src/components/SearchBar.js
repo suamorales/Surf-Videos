@@ -1,12 +1,12 @@
 import React from 'react';
-import AppBar from 'material-ui/AppBar'
-import TextField from 'material-ui/TextField';
-import IconButton from 'material-ui/IconButton';
+import {Link} from 'react-router-dom'
+import {withRouter} from 'react-router';
 import ActionHomeIcon from 'material-ui/svg-icons/action/home';
-import SearchIcon from 'material-ui/svg-icons/action/search';
-import { Link } from 'react-router-dom'
+import AppBar from 'material-ui/AppBar'
 import CircularProgress from 'material-ui/CircularProgress';
-import { withRouter } from 'react-router';
+import IconButton from 'material-ui/IconButton';
+import SearchIcon from 'material-ui/svg-icons/action/search';
+import TextField from 'material-ui/TextField';
 
 const SearchBar = (props) => {
   const {handleSearchRequest, isLoading, location} = props;
