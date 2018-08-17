@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import HomePage from '../containers/HomePage';
 
 class AppBase extends Component {
   constructor(props){
@@ -8,10 +9,13 @@ class AppBase extends Component {
     this.state = {};
   }
   render() {
+    const {searchResults} = this.props;
+
     return(
     <div>
       <MuiThemeProvider>
         <SearchBar />
+        <HomePage />
       </MuiThemeProvider>
     </div>);
   }
