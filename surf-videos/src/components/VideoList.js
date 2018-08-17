@@ -3,7 +3,6 @@ import { Card, CardTitle, CardMedia } from 'material-ui/Card';
 
 const VideoList = (props) => {
   const {searchResults} = props;
-    console.log(searchResults);
     return(
       searchResults.items.map(res => 
         <div>

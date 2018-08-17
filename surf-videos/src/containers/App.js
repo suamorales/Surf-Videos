@@ -4,8 +4,34 @@ import AppBase from '../components/AppBase';
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      searchResults: [],
+      isLoading: false,
+      fetchError: false,
+    };
+    this.handleSearchRequest = this.handleSearchRequest.bind(this);
   }
+
+  handleSearchRequest(){
+    const {query} = this.state;
+    this.setState({isLoading: true}, () => {
+      axios(videoSearchEndpoint.replace('{query}', query)).then(res => {
+        const searchResults = [...res.data.items];
+        const nextPageToken = res.data.nextPageToken;
+        const isLastPageofData = nextPageToken && true; // coerce to boolean
+  
+        this.setState({
+          isLoading: false,
+          searchResults, 
+          nextPageToken, 
+          isLastPageofData});
+          
+      }).catch(err => {
+        console.log(err);
+      })
+    })
+  }
+
   render() {
     const searchResults = {
       "kind": "youtube#searchListResponse",
@@ -84,7 +110,10 @@ class App extends Component {
         }
        }]
       }
-    return(<AppBase searchResults={searchResults} />)
+    return(<AppBase
+            handleSearchRequest={this.handleSearchRequest}
+            searchResults={searchResults}
+          />)
   }
 }
 

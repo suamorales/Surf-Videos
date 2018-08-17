@@ -14,8 +14,11 @@ class AppBase extends Component {
     return(
     <div>
       <MuiThemeProvider>
-        <SearchBar />
-        <HomePage searchResults={searchResults} />
+        <SearchBar
+          handleSearchRequest={handleSearchRequest}
+          isLoading={isLoading}
+        />
+        <HomePage searchResults={searchResults} handle />
       </MuiThemeProvider>
     </div>);
   }
